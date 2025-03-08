@@ -1,32 +1,17 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <title>Самые высокие здания и сооружения</title>
-    <link rel="stylesheet" href="/static/style.css" />
-  </head>
-  <body>
-    <h3>Список зданий</h3>
-    <table>
-      <!-- формируем заголовок таблицы (имена столбцов) -->
-      <thead>
-        <tr>
-          <!-- выводим имя каждого столбца -->
-            {% for item in buildings_head %}
-              <th> {{ item }} </th>
-            {% endfor %}
-          </tr>
-      </thead>
-      <tbody>
-      <!-- для всех строк таблицы -->
-        {% for row in buildings_body %}
-          <tr>
-          <!-- выводим значение каждого столбца -->
-            {% for item in row %}
-              <td> {{ item }} </td>
-            {% endfor %}
-          </tr>
-          {% endfor %}
-        </tbody>
-    </table>
-  </body>
-</html>
+{% import "table_macro.html" as macros %}
+
+<a name="top"></a>
+<h1>Список зданий</h1>
+<ul>
+    <li><a href="#buildings">Список зданий</a></li>
+    <li><a href="#type_grouped">Группировка по типу</a></li>
+    <li><a href="#country_grouped">Группировка по стране</a></li>
+    <li><a href="#year_grouped">Группировка по году</a></li>
+    <li><a href="#year_range">Здания 2000-2018</a></li>
+</ul>
+
+{{ macros.render_table("Список зданий", buildings_head, buildings_body, "buildings") }}
+{{ macros.render_table("Группировка по типу", grouped_type_head, grouped_type_body, "grouped_type") }}
+{{ macros.render_table("Группировка по стране", grouped_country_head, grouped_country_body, "grouped_country") }}
+{{ macros.render_table("Группировка по году", grouped_year_head, grouped_year_body, "grouped_year") }}
+{{ macros.render_table("Здания 2000-2018", interval_head, interval_body, "interval") }}
